@@ -39,16 +39,36 @@ function LoginButton(props) {
 }
 
 function loginClick(username, password, setloginstate, history) {
-    if (username === "josephxu1234" && password === "password") {
-        AuthenticationService.registerSuccessfulLogin(username, password);
-        console.log("Authentication success");
-        setloginstate(SUCCESS_LOGIN);
-        history.push(`/welcome/${username}`);
-    }
-    else {
-        console.log("Failed");
-        setloginstate(FAIL_LOGIN);
-    }
+
+    /*
+    AuthenticationService.verifyAuthentication(username, password).then(
+        () => {
+            AuthenticationService.registerSuccessfulLogin(username, password);
+            console.log("Authentication success");
+            setloginstate(SUCCESS_LOGIN);
+            history.push(`/welcome/${username}`);
+        }
+    ).catch(
+        () => {
+            console.log("Failed");
+            setloginstate(FAIL_LOGIN);
+        }
+    );
+    */
+
+    AuthenticationService.verifyJWTAuthentication(username, password).then(
+        (response) => {
+            AuthenticationService.registerSuccessfulJWTLogin(username, response.data.token);
+            console.log("Authentication success");
+            setloginstate(SUCCESS_LOGIN);
+            history.push(`/welcome/${username}`);
+        }
+    ).catch(
+        () => {
+            console.log("Failed");
+            setloginstate(FAIL_LOGIN);
+        }
+    );
 }
 
 export default Login;

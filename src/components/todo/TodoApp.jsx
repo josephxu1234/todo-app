@@ -8,6 +8,7 @@ import Footer from './Footer.jsx';
 import Logout from './Logout.jsx';
 import Error from './Error.jsx';
 import Welcome from './Welcome.jsx';
+import Todo from './Todo.jsx';
 
 function TodoApp() {
     return (
@@ -18,6 +19,7 @@ function TodoApp() {
                     <Route path="/" exact component={Login} />
                     <Route path="/login" exact component={Login} />
                     <AuthenticatedRoute path="/welcome/:name" exact component={Welcome} />
+                    <AuthenticatedRoute path="/todos/:id" exact component={Todo} />
                     <AuthenticatedRoute path="/todos" exact component={ListTodos} />
                     <AuthenticatedRoute path="/logout" exact component={Logout} />
                     <Route component={Error} />

@@ -9,7 +9,7 @@ function Header() {
     return (
         <header>
             <nav className="navbar navbar-expand-md navbar-dark bg-dark">
-                <div><a className="navbar-brand">josephxu1234</a></div>
+                <div><h1 className="navbar-brand">josephxu1234</h1></div>
                 <ul className="navbar-nav">
                     {isUserLoggedIn && <li key = "welcome"> <Link to="/welcome/josephxu1234" className="nav-link">Home</Link></li>}
                     {isUserLoggedIn && <li key = "todos"> <Link to="/todos" className="nav-link">Todos</Link></li>}
